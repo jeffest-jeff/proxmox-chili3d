@@ -1,0 +1,47 @@
+{
+  "name": "Chili3D",
+  "slug": "chili3d",
+  "categories": [0],
+  "date_created": "2026-08-18",
+  "type": "ct",
+  "updateable": true,
+  "privileged": false,
+  "interface_port": 80,
+  "documentation": "https://github.com/xiangechen/chili3d",
+  "website": "https://chili3d.com",
+  "repository": "https://github.com/xiangechen/chili3d",
+  "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/webp/chili3d.webp",
+  "description": "Chili3D is an open-source, browser-based 3D CAD application built with TypeScript, Three.js and OpenCascade (OCCT) compiled to WebAssembly. This deploys the static production build (npm run build) served by nginx - no backend or database required.",
+  "install_methods": [
+    {
+      "type": "default",
+      "script": "ct/chili3d.sh",
+      "config_path": "/etc/nginx/sites-available/chili3d.conf",
+      "resources": {
+        "cpu": 4,
+        "ram": 4096,
+        "hdd": 10,
+        "os": "Debian",
+        "version": "13"
+      }
+    }
+  ],
+  "default_credentials": {
+    "username": null,
+    "password": null
+  },
+  "notes": [
+    {
+      "text": "Documents are stored locally in your browser (IndexedDB). There is no server-side persistence - use the app's export/save-as (STEP, IGES, BREP, STL) to keep permanent copies.",
+      "type": "info"
+    },
+    {
+      "text": "The upstream app loads Microsoft Clarity analytics by default. To opt out, remove the Clarity <script> block from /opt/chili3d/public/index.html before rebuilding, or from /var/www/html/index.html after install, then reload nginx.",
+      "type": "info"
+    },
+    {
+      "text": "Licensed under AGPL-3.0 (the WASM module under cpp/ is LGPL-3.0). Review the license before redistributing or offering this as a hosted service.",
+      "type": "info"
+    }
+  ]
+}

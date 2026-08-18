@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh api *)",
+      "Read(//tmp/**)",
+      "Read(//private/tmp/**)",
+      "Bash(gh api repos/xiangechen/chili3d/contents/packages/wasm/lib/chili-wasm.js --jq '.content' | base64 -d > /tmp/chili-wasm.js *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://cdn.jsdelivr.net/gh/selfhst/icons@main/webp/chili3d.webp\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://cdn.jsdelivr.net/gh/selfhst/icons@main/webp/chili-3d.webp\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://cdn.jsdelivr.net/gh/selfhst/icons@main/svg/chili3d.svg\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"https://github.com/xiangechen/chili3d/wiki\")",
+      "Bash(curl -s \"https://chili3d.com\" -o /dev/null -w \"%{http_code}\\\\n\")",
+      "Bash(mkdir -p /Users/jkleinhenz/Documents/Projects/proxmox-chili3d/ct /Users/jkleinhenz/Documents/Projects/proxmox-chili3d/install /Users/jkleinhenz/Documents/Projects/proxmox-chili3d/json)",
+      "Bash(python3 -m json.tool json/chili3d.json)",
+      "Bash(shellcheck ct/chili3d.sh install/chili3d-install.sh)",
+      "Bash(bash -n ct/chili3d.sh)",
+      "Bash(bash -n install/chili3d-install.sh)"
+    ],
+    "additionalDirectories": [
+      "/Users/jkleinhenz/Documents/Projects/proxmox-chili3d"
+    ]
+  }
+}
