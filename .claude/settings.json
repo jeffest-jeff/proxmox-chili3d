@@ -14,7 +14,8 @@
       "Bash(python3 -m json.tool json/chili3d.json)",
       "Bash(shellcheck ct/chili3d.sh install/chili3d-install.sh)",
       "Bash(bash -n ct/chili3d.sh)",
-      "Bash(bash -n install/chili3d-install.sh)"
+      "Bash(bash -n install/chili3d-install.sh)",
+      "Bash(git -C /Users/jkleinhenz/Documents/Projects/proxmox-chili3d branch --show-current)"
     ],
     "additionalDirectories": [
       "/Users/jkleinhenz/Documents/Projects/proxmox-chili3d"

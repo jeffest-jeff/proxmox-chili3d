@@ -18,11 +18,19 @@ This repo follows the script structure and helper-function conventions of
 Run this in the Proxmox VE host shell:
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/jeffest-jeff/proxmox-chili3d/main/ct/chili3d.sh)"
+COMMUNITY_SCRIPTS_URL="https://raw.githubusercontent.com/jeffest-jeff/proxmox-chili3d/main" \
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/jeffest-jeff/proxmox-chili3d/main/ct/chili3d.sh)"
 ```
 
 This creates a new unprivileged Debian 13 LXC container, installs Node.js and nginx,
 builds Chili3D from the latest GitHub release, and serves it on port 80.
+
+`ct/chili3d.sh` boots the shared engine from `community-scripts/core`, but that engine
+has no way to know `install/chili3d-install.sh` and `json/chili3d.json` live in *this*
+repo instead of the official `community-scripts/ProxmoxVED` — without
+`COMMUNITY_SCRIPTS_URL` set, it 404s trying to fetch them from upstream. Keep the env
+var on every invocation (install **and** update) until/unless this script is merged
+into ProxmoxVED itself.
 
 Default resources (adjustable during the interactive setup, or via `var_*` environment
 variables for an unattended install):
@@ -38,8 +46,10 @@ Once complete, open `http://<container-ip>/` in a browser.
 
 ## Updating
 
-Re-run the same script inside the container (or via the Proxmox VE web UI's update
-button) to pull the latest Chili3D release, rebuild, and redeploy it.
+Re-run the install command above, entering the existing container's ID when prompted,
+to pull the latest Chili3D release, rebuild, and redeploy it. The Proxmox VE web UI's
+generic "update" button won't work here — it doesn't know about `COMMUNITY_SCRIPTS_URL`
+— so update from the host shell with the env var set, the same way you installed.
 
 ## Notes
 
